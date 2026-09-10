@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #10141b;
+  --bg-surface: #171c25;
+  --bg-surface-raised: #1e2530;
+  --line: #2a3140;
+  --line-strong: #3a4356;
+  --text-primary: #edf1f5;
+  --text-muted: #8d96a6;
+  --text-faint: #5c6474;
+  --copper: #c97a3d;
+  --copper-bright: #e0954f;
+  --signal: #4fd1b0;
+  --warn: #e2604f;
+}
+
+@theme inline {
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-raised: var(--bg-surface-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-copper: var(--copper);
+  --color-copper-bright: var(--copper-bright);
+  --color-signal: var(--signal);
+  --color-warn: var(--warn);
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+/* Marco tipo "ficha técnica": esquinas en L en vez de tarjetas redondeadas */
+.spec-frame {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--bg-surface);
+}
+.spec-frame::before,
+.spec-frame::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--copper);
+  opacity: 0.9;
+}
+.spec-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.spec-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.trace-divider {
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    var(--line) 0,
+    var(--line) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  background-size: 8px 1px;
+}
+
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--copper);
+  color: #10141b;
+}
